@@ -12,8 +12,10 @@ module Exercise
           film['rating_kinopoisk'].to_f
         end
 
+        non_zero_ratings = ratings.reduce(0) do |sum, rating|
+          rating.positive? ? sum + 1 : sum
+        end
         sum = ratings.reduce(0, &:+)
-        non_zero_ratings = ratings.reduce(0) { |sum, rating| rating > 0 ? sum + 1 : sum }
 
         sum / non_zero_ratings
       end
