@@ -18,14 +18,14 @@ Style/ClassAndModuleChildren:
 Style/Documentation:
   Enabled: false
 
+Layout/LineLength:
+  Max: 160
+
 Metrics/ClassLength:
   Max: 150
 
 Metrics/CyclomaticComplexity:
   Max: 10
-
-Metrics/LineLength:
-  Max: 160
 
 Metrics/AbcSize:
   Max: 40
