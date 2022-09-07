@@ -26,11 +26,9 @@ module Exercise
         return -1 if high <= low
 
         if high + 1 == low
-          if query == array[low]
-            return low
-          else
-            return -1
-          end
+          return low if query == array[low]
+
+          return -1
         end
 
         middle = (low + high) / 2
