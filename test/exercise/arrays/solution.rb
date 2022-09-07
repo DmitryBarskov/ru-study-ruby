@@ -29,7 +29,7 @@ module Exercise
           if query == array[low]
             return low
           else
-            reutrn -1
+            return -1
           end
         end
 
