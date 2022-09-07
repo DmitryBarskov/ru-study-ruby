@@ -16,19 +16,32 @@ module Exercise
         array.map { |item| item.positive? ? max_value : item }
       end
 
+      # Search item index with value = query in range [low, high) in given array
+      # @param [Array] array The array to search in
+      # @param [Object] query The value to search (should implement <=>)
+      # @param [Integer] :low Index to search after (inclusive)
+      # @param [Integer] :high Index to search before (exclusive)
+      # @retrun [Integer] Index query found at or -1 if not found
       def search(array, query, low: 0, high: array.length)
-        return -1 if (high - low).zero?
-        return low if high - low == 1 && query == array[low]
-        return -1 if high - low == 1
+        return -1 if high <= low
 
-        me = (low + high) / 2
+        if high + 1 == low
+          if query == array[low]
+            return low
+          else
+            reutrn -1
+          end
+        end
 
-        if query == array[me]
-          me
-        elsif query < array[me]
-          search(array, query, low: low, high: me)
-        else
-          search(array, query, low: me, high: high)
+        middle = (low + high) / 2
+
+        case query <=> array[middle]
+        when 0
+          middle
+        when -1
+          search(array, query, low: low, high: middle)
+        when 1
+          search(array, query, low: middle, high: high)
         end
       end
     end
