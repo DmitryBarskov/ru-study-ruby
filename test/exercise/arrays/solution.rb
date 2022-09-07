@@ -25,7 +25,7 @@ module Exercise
       def search(array, query, low: 0, high: array.length)
         return -1 if high <= low
 
-        if high + 1 == low
+        if low + 1 == high
           return low if query == array[low]
 
           return -1
